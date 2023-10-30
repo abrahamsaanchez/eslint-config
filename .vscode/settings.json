@@ -1,0 +1,30 @@
+{
+    // Enable the eslint formatter
+    "eslint.format.enable": true,
+
+    // Enable the ESlint flat config support
+    "eslint.experimental.useFlatConfig": true,
+
+    // Disable the default formatter, use eslint instead
+    "prettier.enable": false,
+    "editor.formatOnSave": false,
+
+    // Auto fix
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+        "source.organizeImports": "never"
+    },
+
+    // Enable eslint for all supported languages
+    "eslint.validate": [
+        "html",
+        "javascript",
+        "javascriptreact",
+        "json",
+        "jsonc",
+        "markdown",
+        "typescript",
+        "typescriptreact",
+        "yaml"
+    ]
+}

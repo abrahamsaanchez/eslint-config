@@ -1,4 +1,6 @@
 import { GLOB_TESTS } from '../../globs';
+import { pluginNoOnlyTests } from '../../plugins/no-only-tests';
+import { pluginVitest } from '../../plugins/vitest';
 import type { ConfigurationItems } from '../../types/configuration-items';
 import type { TestConfiguration } from './test-configuration';
 
@@ -16,6 +18,21 @@ export function test(configuration: TestConfiguration): ConfigurationItems {
 
     // Return the `test` rules
     return [
+        {
+            name: 'abrahamsaanchez:test:setup',
+            plugins: {
+                test: {
+                    ...pluginVitest,
+                    // eslint-disable-next-line ts/no-unsafe-assignment
+                    rules: {
+                        ...pluginVitest.rules,
+                        // extend `test/no-only-tests` rule
+                        // eslint-disable-next-line ts/no-unsafe-member-access
+                        ...pluginNoOnlyTests.rules,
+                    },
+                },
+            },
+        },
         {
             files: GLOB_TESTS,
             name: 'abrahamsaanchez:test:rules',

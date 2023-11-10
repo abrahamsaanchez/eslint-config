@@ -36,7 +36,7 @@ export function stylistic(configuration: StylisticConfiguration): ConfigurationI
 
                 'style/array-bracket-newline': [
                     'error',
-                    'always',
+                    'consistent',
                 ],
                 'style/array-bracket-spacing': [
                     'error',

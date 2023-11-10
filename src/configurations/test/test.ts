@@ -23,11 +23,9 @@ export function test(configuration: TestConfiguration): ConfigurationItems {
             plugins: {
                 test: {
                     ...pluginVitest,
-                    // eslint-disable-next-line ts/no-unsafe-assignment
                     rules: {
                         ...pluginVitest.rules,
                         // extend `test/no-only-tests` rule
-                        // eslint-disable-next-line ts/no-unsafe-member-access
                         ...pluginNoOnlyTests.rules,
                     },
                 },

@@ -1,4 +1,5 @@
 import { comments, ignores, imports, javascript, jsdoc, jsonc, markdown, node, perfectionist, sortPackageJson, sortTsconfig, stylistic, test, typescript, unicorn, yaml } from './configurations';
+import { tailwindcss } from './configurations/tailwindcss';
 import type { ConfigurationItem } from './types/configuration-item';
 import type { ConfigurationItems } from './types/configuration-items';
 import type { EslintConfigurationFactoryOptions } from './types/eslint-configuration-factory-options';
@@ -114,6 +115,12 @@ export class EslintConfigurationFactory {
                 sortPackageJson(),
                 sortTsconfig(),
             );
+        }
+
+        // Check if the `tailwindcss` support is enabled
+        if (options.isTailwindCSSEnabled ?? true) {
+            // Push the `tailwindcss` rules
+            configurations.push(tailwindcss());
         }
 
         // Check if the `yaml` support is enabled

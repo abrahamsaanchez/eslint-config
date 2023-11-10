@@ -9,7 +9,7 @@ import type { ConfigurationItems } from '../types/configuration-items';
 export function perfectionist(): ConfigurationItems {
     return [
         {
-            name: 'antfu:perfectionist',
+            name: 'abrahamsaanchez:perfectionist',
             plugins: {
                 perfectionist: pluginPerfectionist,
             },

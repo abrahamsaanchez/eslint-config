@@ -22,6 +22,13 @@ export type EslintConfigurationFactoryOptions = IsInEditorProperty & StylisticPr
     isJSXEnabled?: boolean;
 
     /**
+     * Determines if the TailwindCSS support is enabled.
+     *
+     * @default true
+     */
+    isTailwindCSSEnabled?: boolean;
+
+    /**
      * Determines if the YAML support is enabled.
      *
      * @default true

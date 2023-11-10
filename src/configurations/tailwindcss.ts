@@ -1,3 +1,5 @@
+import { GLOB_HTML } from '../globs';
+import { parserAngular } from '../plugins/angular';
 import { pluginTailwindCSS } from '../plugins/tailwindcss';
 import type { ConfigurationItems } from '../types/configuration-items';
 
@@ -8,6 +10,14 @@ import type { ConfigurationItems } from '../types/configuration-items';
  */
 export function tailwindcss(): ConfigurationItems {
     return [
+        {
+            files: [
+                GLOB_HTML,
+            ],
+            languageOptions: {
+                parser: parserAngular,
+            },
+        },
         {
             name: 'abrahamsaanchez:tailwindcss',
             plugins: {

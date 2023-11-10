@@ -36,6 +36,17 @@ import { EslintConfigurationFactory } from '@abrahamsaanchez/eslint-config';
 export default EslintConfigurationFactory.create();
 ```
 
+Using CommonJS:
+
+```js
+// eslint.config.js
+const {
+    EslintConfigurationFactory
+} = require('@abrahamsaanchez/eslint-config');
+
+module.export = EslintConfigurationFactory.create();
+```
+
 > Note that `.eslintignore` no longer works in Flat config.
 
 ### Add script for package.json

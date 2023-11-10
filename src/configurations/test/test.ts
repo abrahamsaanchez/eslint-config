@@ -1,6 +1,6 @@
 import { GLOB_TESTS } from '../../globs';
+import { pluginJest } from '../../plugins/jest';
 import { pluginNoOnlyTests } from '../../plugins/no-only-tests';
-import { pluginVitest } from '../../plugins/vitest';
 import type { ConfigurationItems } from '../../types/configuration-items';
 import type { TestConfiguration } from './test-configuration';
 
@@ -22,9 +22,9 @@ export function test(configuration: TestConfiguration): ConfigurationItems {
             name: 'abrahamsaanchez:test:setup',
             plugins: {
                 test: {
-                    ...pluginVitest,
+                    ...pluginJest,
                     rules: {
-                        ...pluginVitest.rules,
+                        ...pluginJest.rules,
                         // extend `test/no-only-tests` rule
                         ...pluginNoOnlyTests.rules,
                     },
@@ -33,6 +33,11 @@ export function test(configuration: TestConfiguration): ConfigurationItems {
         },
         {
             files: GLOB_TESTS,
+            languageOptions: {
+                globals: {
+                    'jest/globals': true,
+                },
+            },
             name: 'abrahamsaanchez:test:rules',
             rules: {
                 'test/consistent-test-it': [
@@ -42,10 +47,39 @@ export function test(configuration: TestConfiguration): ConfigurationItems {
                         withinDescribe: 'it',
                     },
                 ],
+                'test/expect-expect': [
+                    'error',
+                    {
+                        additionalTestBlockFunctions: [
+                        ],
+                        assertFunctionNames: [
+                            'expect',
+                        ],
+                    },
+                ],
+                'test/no-conditional-expect': 'error',
+                'test/no-conditional-in-test': 'error',
+                'test/no-confusing-set-timeout': 'off',
+                'test/no-deprecated-functions': 'error',
+                'test/no-done-callback': 'error',
+                'test/no-duplicate-hooks': 'error',
                 'test/no-identical-title': 'error',
                 'test/no-only-tests': isInEditor ? 'off' : 'error',
                 'test/prefer-hooks-in-order': 'error',
-                'test/prefer-lowercase-title': 'error',
+                'test/prefer-hooks-on-top': 'error',
+                'test/prefer-lowercase-title': [
+                    'error',
+                    {
+                        ignoreTopLevelDescribe: true,
+                    },
+                ],
+                'test/prefer-spy-on': 'error',
+                'test/require-top-level-describe': [
+                    'error',
+                    {
+                        maxNumberOfTopLevelDescribes: 1,
+                    },
+                ],
 
                 ...overrides,
             },

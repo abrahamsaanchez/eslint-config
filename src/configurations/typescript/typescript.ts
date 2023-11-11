@@ -1,7 +1,7 @@
 import { GLOB_TS, GLOB_TSX } from '../../globs';
-import { pluginAntfu } from '../../plugins/antfu';
-import { pluginImport } from '../../plugins/import';
-import { parserTs, pluginTs } from '../../plugins/typescript';
+import { PLUGIN_ANTFU } from '../../plugins/antfu';
+import { PLUGIN_IMPORT } from '../../plugins/import';
+import { PARSER_TYPESCRIPT, PLUGIN_TYPESCRIPT } from '../../plugins/typescript';
 import type { ConfigurationItem } from '../../types/configuration-item';
 import type { ConfigurationItems } from '../../types/configuration-items';
 import { coerceArray } from '../../utils/coerce-array';
@@ -179,9 +179,9 @@ export function typescript(configuration?: TypescriptConfiguration): Configurati
             // Install the plugins without globs, so they can be configured separately
             name: 'abrahamsaanchez:typescript:setup',
             plugins: {
-                antfu: pluginAntfu,
-                import: pluginImport,
-                ts: pluginTs,
+                antfu: PLUGIN_ANTFU,
+                import: PLUGIN_IMPORT,
+                ts: PLUGIN_TYPESCRIPT,
             },
         },
         {
@@ -190,7 +190,7 @@ export function typescript(configuration?: TypescriptConfiguration): Configurati
                 GLOB_TSX,
             ],
             languageOptions: {
-                parser: parserTs,
+                parser: PARSER_TYPESCRIPT,
                 parserOptions: {
                     sourceType: 'module',
                     ...tsconfigPath

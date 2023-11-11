@@ -1,4 +1,4 @@
-import { comments, ignores, imports, javascript, jsdoc, jsonc, markdown, node, perfectionist, sortPackageJson, sortTsconfig, stylistic, test, typescript, unicorn, yaml } from './configurations';
+import { comments, ignores, imports, javascript, jsdoc, jsonc, markdown, node, perfectionist, sortPackageJson, sortTsconfig, test, typescript, unicorn, yaml } from './configurations';
 import { tailwindcss } from './configurations/tailwindcss';
 import type { ConfigurationItem } from './types/configuration-item';
 import type { ConfigurationItems } from './types/configuration-items';
@@ -27,17 +27,6 @@ export class EslintConfigurationFactory {
 
         // Determines if `typescript` is enabled
         const isTypescriptEnabled = isPackageExists('typescript');
-
-        // Generate the stylistic configuration
-        const stylisticConfiguration = typeof options.stylistic === 'object'
-            ? options.stylistic
-            : {};
-
-        // Check if the stylistic configuration is defined and the `isJSXEnabled` property is not defined
-        if (stylisticConfiguration && !('isJSXEnabled' in stylisticConfiguration)) {
-            // Set the JSX enabled as the options one
-            stylisticConfiguration.isJSXEnabled = options.isJSXEnabled ?? true;
-        }
 
         // Generate the array of configurations
         const configurations: Array<ConfigurationItems> = [
@@ -69,11 +58,8 @@ export class EslintConfigurationFactory {
             }),
             comments(),
             node(),
-            jsdoc({
-                stylistic: stylisticConfiguration,
-            }),
+            jsdoc(),
             imports({
-                stylistic: stylisticConfiguration,
                 typescript: isTypescriptEnabled ? options.typescript : {},
             }),
             unicorn(),
@@ -87,12 +73,6 @@ export class EslintConfigurationFactory {
                 ...options.typescript,
                 overrides: overrides.typescript,
             }));
-        }
-
-        // Check if the `stylistic` configuration is enabled
-        if (stylisticConfiguration) {
-            // Push the `stylistic` rules
-            configurations.push(stylistic(stylisticConfiguration));
         }
 
         // Check if the `test` support is enabled
@@ -110,7 +90,6 @@ export class EslintConfigurationFactory {
             configurations.push(
                 jsonc({
                     overrides: overrides.jsonc,
-                    stylistic: stylisticConfiguration,
                 }),
                 sortPackageJson(),
                 sortTsconfig(),
@@ -128,7 +107,6 @@ export class EslintConfigurationFactory {
             // Push the `yaml` rules
             configurations.push(yaml({
                 overrides: overrides.yaml,
-                stylistic: stylisticConfiguration,
             }));
         }
 
@@ -144,7 +122,7 @@ export class EslintConfigurationFactory {
         const configurationItem = extractConfigurationItemFromObject(options as Record<string, unknown>);
 
         // Check if a configuration item is extracted
-        if (Object.keys(configurationItem).length) {
+        if (Object.keys(configurationItem).length > 0) {
             // Push the configuration item into the configurations
             configurations.push([
                 configurationItem,

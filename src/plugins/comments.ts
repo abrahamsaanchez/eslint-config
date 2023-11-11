@@ -1,4 +1,7 @@
 // eslint-disable-next-line ts/ban-ts-comment
 // @ts-nocheck
 
-export { default as pluginComments } from 'eslint-plugin-eslint-comments';
+import { interopDefault } from '../utils/interop-default';
+import * as _pluginComments from 'eslint-plugin-eslint-comments';
+
+export const PLUGIN_COMMENTS = interopDefault(_pluginComments);

@@ -8,7 +8,6 @@ export * from './markdown';
 export * from './node';
 export * from './sort-package-json';
 export * from './sort-ts-config';
-export * from './stylistic';
 export * from './typescript';
 export * from './unicorn';
 export * from './yaml';

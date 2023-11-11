@@ -1,4 +1,7 @@
 // eslint-disable-next-line ts/ban-ts-comment
 // @ts-nocheck
 
-export { default as pluginJest } from 'eslint-plugin-jest';
+import { interopDefault } from '../utils/interop-default';
+import * as _pluginJest from 'eslint-plugin-jest';
+
+export const PLUGIN_JEST = interopDefault(_pluginJest);

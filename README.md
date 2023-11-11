@@ -1,17 +1,15 @@
 # @abrahamsaanchez/eslint-config
 
-A configuration factory for [ESLint](https://eslint.org), almost forked from [@antfu/eslint-config](https://github.com/antfu/eslint-config) but with some changes.
+A configuration factory for [ESLint](https://eslint.org), heavily inspired from [@antfu/eslint-config](https://github.com/antfu/eslint-config) but allowing Prettier.
 
 - Single quotes, no semi.
 - Indent to 4 spaces by default (in YAML files we use 2 spaces to avoid errors).
-- Auto fix for formatting (aimed to be used standalone **without** Prettier).
 - Designed to work with TypeScript and JSX out-of-box.
 - Lints also for json, markdown and yaml.
 - Sorted imports, dangling commas.
 - Reasonable defaults, best practices, only one-line of config
 - Respects `.gitignore` by default
 - [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
-- Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
 
 > [!IMPORTANT]
 > This config is written in the new [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new).
@@ -62,7 +60,7 @@ For example:
 }
 ```
 
-## VS Code support (auto fix)
+## VS Code support
 
 Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
@@ -70,34 +68,17 @@ Add the following settings to your `.vscode/settings.json`:
 
 ```jsonc
 {
-    // Enable the eslint formatter
-    "eslint.format.enable": true,
+    // Code Actions for the editor on save
+    "editor.codeActionsOnSave": {
+        // Fix all the rules with eslint
+        "source.fixAll.eslint": true
+    },
+
+    // Ensure the files are formatted on save
+    "editor.formatOnSave": true,
 
     // Enable the ESlint flat config support
     "eslint.experimental.useFlatConfig": true,
-
-    // Disable the default formatter, use eslint instead
-    "prettier.enable": false,
-    "editor.formatOnSave": false,
-
-    // Auto fix
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit",
-        "source.organizeImports": "never"
-    },
-
-    // Silent the stylistic rules in the IDE, but still auto fix them
-    "eslint.rules.customizations": [
-        { "rule": "style/*", "severity": "off" },
-        { "rule": "*-indent", "severity": "off" },
-        { "rule": "*-spacing", "severity": "off" },
-        { "rule": "*-spaces", "severity": "off" },
-        { "rule": "*-order", "severity": "off" },
-        { "rule": "*-dangle", "severity": "off" },
-        { "rule": "*-newline", "severity": "off" },
-        { "rule": "*quotes", "severity": "off" },
-        { "rule": "*semi", "severity": "off" }
-    ],
 
     // Enable eslint for all supported languages
     "eslint.validate": [
@@ -109,6 +90,7 @@ Add the following settings to your `.vscode/settings.json`:
         "markdown",
         "typescript",
         "typescriptreact",
+        "vue",
         "yaml"
     ]
 }

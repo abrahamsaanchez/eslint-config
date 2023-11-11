@@ -1,4 +1,7 @@
 // eslint-disable-next-line ts/ban-ts-comment
 // @ts-nocheck
 
-export { default as pluginUnicorn } from 'eslint-plugin-unicorn';
+import { interopDefault } from '../utils/interop-default';
+import * as _pluginUnicorn from 'eslint-plugin-unicorn';
+
+export const PLUGIN_UNICORN = interopDefault(_pluginUnicorn);

@@ -1,5 +1,5 @@
 import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE } from '../../globs';
-import { pluginMarkdown } from '../../plugins/markdown';
+import { PLUGIN_MARKDOWN } from '../../plugins/markdown';
 import type { ConfigurationItems } from '../../types/configuration-items';
 import type { MarkdownConfiguration } from './markdown-configuration';
 
@@ -19,7 +19,7 @@ export function markdown(configuration: MarkdownConfiguration): ConfigurationIte
         {
             name: 'abrahamsaanchez:markdown:setup',
             plugins: {
-                markdown: pluginMarkdown,
+                markdown: PLUGIN_MARKDOWN,
             },
         },
         {

@@ -1,5 +1,5 @@
-import { pluginAntfu } from '../../plugins/antfu';
-import { pluginImport } from '../../plugins/import';
+import { PLUGIN_ANTFU } from '../../plugins/antfu';
+import { PLUGIN_IMPORT } from '../../plugins/import';
 import type { ConfigurationItems } from '../../types/configuration-items';
 import { coerceArray } from '../../utils/coerce-array';
 import type { ImportsConfiguration } from './imports-configuration';
@@ -10,9 +10,6 @@ import type { ImportsConfiguration } from './imports-configuration';
  * @param configuration
  */
 export function imports(configuration: ImportsConfiguration): ConfigurationItems {
-    // Determines if `stylistics` is enabled
-    const isStylisticEnabled = Object.keys(configuration.stylistic ?? {}).length > 0;
-
     // Determines if `typescript` is enabled
     const isTypescriptEnabled = Object.keys(configuration.typescript ?? {}).length > 0;
 
@@ -26,14 +23,15 @@ export function imports(configuration: ImportsConfiguration): ConfigurationItems
         {
             name: 'abrahamsaanchez:imports',
             plugins: {
-                antfu: pluginAntfu,
-                import: pluginImport,
+                antfu: PLUGIN_ANTFU,
+                import: PLUGIN_IMPORT,
             },
             rules: {
                 'antfu/import-dedupe': 'error',
                 'antfu/no-import-node-modules-by-path': 'error',
 
                 'import/first': 'error',
+                'import/newline-after-import': 'error',
                 'import/no-duplicates': [
                     'error',
                     {
@@ -46,12 +44,6 @@ export function imports(configuration: ImportsConfiguration): ConfigurationItems
                 'import/no-unresolved': 'error',
                 'import/no-webpack-loader-syntax': 'error',
                 'import/order': 'off',
-
-                ...isStylisticEnabled
-                    ? {
-                            'import/newline-after-import': 'error',
-                        }
-                    : {},
             },
             settings: {
                 ...isTypescriptEnabled

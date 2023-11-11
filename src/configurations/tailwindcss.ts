@@ -1,6 +1,6 @@
 import { GLOB_HTML } from '../globs';
-import { parserAngular } from '../plugins/angular';
-import { pluginTailwindCSS } from '../plugins/tailwindcss';
+import { PARSER_ANGULAR } from '../plugins/angular';
+import { PLUGIN_TAILWINDCSS } from '../plugins/tailwindcss';
 import type { ConfigurationItems } from '../types/configuration-items';
 
 /**
@@ -15,13 +15,13 @@ export function tailwindcss(): ConfigurationItems {
                 GLOB_HTML,
             ],
             languageOptions: {
-                parser: parserAngular,
+                parser: PARSER_ANGULAR,
             },
         },
         {
             name: 'abrahamsaanchez:tailwindcss',
             plugins: {
-                tailwindcss: pluginTailwindCSS,
+                tailwindcss: PLUGIN_TAILWINDCSS,
             },
             rules: {
                 'tailwindcss/classnames-order': 'error',

@@ -1,4 +1,7 @@
 // eslint-disable-next-line ts/ban-ts-comment
 // @ts-nocheck
 
-export { default as pluginMarkdown } from 'eslint-plugin-markdown';
+import { interopDefault } from '../utils/interop-default';
+import * as _pluginMarkdown from 'eslint-plugin-markdown';
+
+export const PLUGIN_MARKDOWN = interopDefault(_pluginMarkdown);

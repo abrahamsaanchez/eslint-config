@@ -1,4 +1,4 @@
-import { pluginComments } from '../plugins/comments';
+import { PLUGIN_COMMENTS } from '../plugins/comments';
 import type { ConfigurationItems } from '../types/configuration-items';
 
 /**
@@ -10,9 +10,15 @@ export function comments(): ConfigurationItems {
         {
             name: 'abrahamsaanchez:eslint-comments',
             plugins: {
-                'eslint-comments': pluginComments as unknown,
+                'eslint-comments': PLUGIN_COMMENTS,
             },
             rules: {
+                'eslint-comments/disable-enable-pair': [
+                    'error',
+                    {
+                        allowWholeFile: true,
+                    },
+                ],
                 'eslint-comments/no-aggregating-enable': 'error',
                 'eslint-comments/no-duplicate-disable': 'error',
                 'eslint-comments/no-unlimited-disable': 'error',

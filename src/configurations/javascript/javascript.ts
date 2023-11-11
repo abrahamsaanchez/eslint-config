@@ -1,6 +1,6 @@
 import { GLOB_SRC, GLOB_SRC_EXT } from '../../globs';
-import { pluginAntfu } from '../../plugins/antfu';
-import { pluginUnusedImports } from '../../plugins/unused-imports';
+import { PLUGIN_ANTFU } from '../../plugins/antfu';
+import { PLUGIN_UNUSED_IMPORTS } from '../../plugins/unused-imports';
 import type { ConfigurationItems } from '../../types/configuration-items';
 import type { JavascriptConfiguration } from './javascript-configuration';
 import globals from 'globals';
@@ -44,8 +44,8 @@ export function javascript(configuration: JavascriptConfiguration): Configuratio
             },
             name: 'abrahamsaanchez:javascript',
             plugins: {
-                'antfu': pluginAntfu,
-                'unused-imports': pluginUnusedImports as unknown,
+                'antfu': PLUGIN_ANTFU,
+                'unused-imports': PLUGIN_UNUSED_IMPORTS,
             },
             rules: {
                 'accessor-pairs': [

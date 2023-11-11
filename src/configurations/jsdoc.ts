@@ -1,22 +1,16 @@
-import { pluginJsdoc } from '../../plugins/jsdoc';
-import type { ConfigurationItems } from '../../types/configuration-items';
-import type { JsdocConfiguration } from './jsdoc-configuration';
+import { PLUGIN_JSDOC } from '../plugins/jsdoc';
+import type { ConfigurationItems } from '../types/configuration-items';
 
 /**
  * Generates the `jsdoc` rules for the received configuration.
- *
- * @param configuration
  */
-export function jsdoc(configuration: JsdocConfiguration): ConfigurationItems {
-    // Determines if the stylistics are enabled
-    const isStylisticEnabled = Object.keys(configuration.stylistic ?? {}).length > 0;
-
+export function jsdoc(): ConfigurationItems {
     // Return the `jsdoc` rules
     return [
         {
             name: 'abrahamsaanchez:jsdoc',
             plugins: {
-                jsdoc: pluginJsdoc,
+                jsdoc: PLUGIN_JSDOC,
             },
             rules: {
                 'jsdoc/check-access': 'warn',
@@ -70,13 +64,6 @@ export function jsdoc(configuration: JsdocConfiguration): ConfigurationItems {
                         startLines: 1,
                     },
                 ],
-
-                ...isStylisticEnabled
-                    ? {
-                            'jsdoc/check-alignment': 'warn',
-                            'jsdoc/multiline-blocks': 'warn',
-                        }
-                    : {},
             },
         },
     ];

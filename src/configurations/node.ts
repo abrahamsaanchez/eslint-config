@@ -1,4 +1,4 @@
-import { pluginNode } from '../plugins/node';
+import { PLUGIN_NODE } from '../plugins/node';
 import type { ConfigurationItems } from '../types/configuration-items';
 
 /**
@@ -10,7 +10,7 @@ export function node(): ConfigurationItems {
         {
             name: 'abrahamsaanchez:node',
             plugins: {
-                node: pluginNode,
+                node: PLUGIN_NODE,
             },
             rules: {
                 'node/handle-callback-err': [

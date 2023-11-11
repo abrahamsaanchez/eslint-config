@@ -1,10 +1,9 @@
 import type { ConfigurationItem } from './configuration-item';
 import type { IsInEditorProperty } from './is-in-editor-property';
-import type { StylisticProperty } from './stylistic-property';
 import type { TypeScriptConfiguration } from './typescript-configuration';
 import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore';
 
-export type EslintConfigurationFactoryOptions = IsInEditorProperty & StylisticProperty & {
+export type EslintConfigurationFactoryOptions = IsInEditorProperty & {
     /**
      * Determines if the JSONC support is enabled.
      *

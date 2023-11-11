@@ -1,4 +1,4 @@
-import { pluginPerfectionist } from '../plugins/perfectionist';
+import { PLUGIN_PERFECTIONIST } from '../plugins/perfectionist';
 import type { ConfigurationItems } from '../types/configuration-items';
 
 /**
@@ -11,7 +11,7 @@ export function perfectionist(): ConfigurationItems {
         {
             name: 'abrahamsaanchez:perfectionist',
             plugins: {
-                perfectionist: pluginPerfectionist,
+                perfectionist: PLUGIN_PERFECTIONIST,
             },
             rules: {
                 'perfectionist/sort-exports': 'error',

@@ -1,5 +1,5 @@
 import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC } from '../../globs';
-import { parserJsonc, pluginJsonc } from '../../plugins/jsonc';
+import { PARSER_JSONC, PLUGIN_JSONC } from '../../plugins/jsonc';
 import type { ConfigurationItems } from '../../types/configuration-items';
 import type { JsoncConfiguration } from './jsonc-configuration';
 
@@ -14,18 +14,12 @@ export function jsonc(configuration: JsoncConfiguration): ConfigurationItems {
         overrides = {},
     } = configuration;
 
-    // Determines if the stylistics are enabled
-    const isStylisticEnabled = Object.keys(configuration.stylistic ?? {}).length > 0;
-
-    // Extract the identation from the stylistic
-    const indent = configuration.stylistic?.indent ?? 4;
-
     // Return the `jsonc` rules
     return [
         {
             name: 'abrahamsaanchez:jsonc:setup',
             plugins: {
-                jsonc: pluginJsonc,
+                jsonc: PLUGIN_JSONC,
             },
         },
         {
@@ -35,7 +29,7 @@ export function jsonc(configuration: JsoncConfiguration): ConfigurationItems {
                 GLOB_JSONC,
             ],
             languageOptions: {
-                parser: parserJsonc,
+                parser: PARSER_JSONC,
             },
             name: 'abrahamsaanchez:jsonc:rules',
             rules: {
@@ -64,53 +58,6 @@ export function jsonc(configuration: JsoncConfiguration): ConfigurationItems {
                 'jsonc/no-useless-escape': 'error',
                 'jsonc/space-unary-ops': 'error',
                 'jsonc/valid-json-number': 'error',
-
-                ...isStylisticEnabled
-                    ? {
-                            'jsonc/array-bracket-spacing': [
-                                'error',
-                                'never',
-                            ],
-                            'jsonc/comma-dangle': [
-                                'error',
-                                'never',
-                            ],
-                            'jsonc/comma-style': [
-                                'error',
-                                'last',
-                            ],
-                            'jsonc/indent': [
-                                'error',
-                                indent,
-                            ],
-                            'jsonc/key-spacing': [
-                                'error',
-                                {
-                                    afterColon: true,
-                                    beforeColon: false,
-                                },
-                            ],
-                            'jsonc/object-curly-newline': [
-                                'error',
-                                {
-                                    consistent: true,
-                                    multiline: true,
-                                },
-                            ],
-                            'jsonc/object-curly-spacing': [
-                                'error',
-                                'always',
-                            ],
-                            'jsonc/object-property-newline': [
-                                'error',
-                                {
-                                    allowMultiplePropertiesPerLine: true,
-                                },
-                            ],
-                            'jsonc/quote-props': 'error',
-                            'jsonc/quotes': 'error',
-                        }
-                    : {},
 
                 ...overrides,
             },

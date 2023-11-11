@@ -1,7 +1,9 @@
 import { GLOB_TESTS } from '../../globs';
-import { pluginJest } from '../../plugins/jest';
-import { pluginNoOnlyTests } from '../../plugins/no-only-tests';
+import { PLUGIN_JEST } from '../../plugins/jest';
+import { PLUGIN_NO_ONLY_TESTS } from '../../plugins/no-only-tests';
 import type { ConfigurationItems } from '../../types/configuration-items';
+import type { RecursiveRecord } from '../../types/recursive-record';
+import type { Rules } from '../../types/rules';
 import type { TestConfiguration } from './test-configuration';
 
 /**
@@ -22,11 +24,11 @@ export function test(configuration: TestConfiguration): ConfigurationItems {
             name: 'abrahamsaanchez:test:setup',
             plugins: {
                 test: {
-                    ...pluginJest,
+                    ...PLUGIN_JEST as Record<string, unknown>,
                     rules: {
-                        ...pluginJest.rules,
+                        ...(<RecursiveRecord>PLUGIN_JEST).rules as unknown as Rules,
                         // extend `test/no-only-tests` rule
-                        ...pluginNoOnlyTests.rules,
+                        ...(<RecursiveRecord>PLUGIN_NO_ONLY_TESTS).rules as unknown as Rules,
                     },
                 },
             },

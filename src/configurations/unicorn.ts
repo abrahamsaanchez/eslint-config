@@ -15,7 +15,7 @@ export function unicorn(): ConfigurationItems {
             rules: {
                 'unicorn/better-regex': 'error',
                 'unicorn/catch-error-name': 'error',
-                'unicorn/custom-error-definition': 'error',
+                'unicorn/custom-error-definition': 'off',
                 'unicorn/error-message': 'error',
                 'unicorn/escape-case': 'error',
                 'unicorn/explicit-length-check': 'error',

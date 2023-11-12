@@ -46,7 +46,7 @@ export function unicorn(): ConfigurationItems {
                 'unicorn/no-static-only-class': 'error',
                 'unicorn/no-unnecessary-await': 'error',
                 'unicorn/no-zero-fractions': `error`,
-                'unicorn/prefer-add-event-listener': 'error',
+                'unicorn/prefer-add-event-listener': 'off',
                 'unicorn/prefer-array-find': 'error',
                 'unicorn/prefer-array-flat-map': 'error',
                 'unicorn/prefer-array-index-of': 'error',

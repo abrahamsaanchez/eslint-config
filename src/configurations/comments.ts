@@ -1,3 +1,4 @@
+import { GLOB_HTML } from '../globs';
 import { PLUGIN_COMMENTS } from '../plugins/comments';
 import type { ConfigurationItems } from '../types/configuration-items';
 
@@ -8,6 +9,7 @@ export function comments(): ConfigurationItems {
     // Return the `comments` rules
     return [
         {
+            ignores: [GLOB_HTML],
             name: 'abrahamsaanchez:eslint-comments',
             plugins: {
                 'eslint-comments': PLUGIN_COMMENTS,

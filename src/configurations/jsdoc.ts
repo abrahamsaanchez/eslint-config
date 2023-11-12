@@ -1,3 +1,4 @@
+import { GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX } from '../globs';
 import { PLUGIN_JSDOC } from '../plugins/jsdoc';
 import type { ConfigurationItems } from '../types/configuration-items';
 
@@ -8,6 +9,12 @@ export function jsdoc(): ConfigurationItems {
     // Return the `jsdoc` rules
     return [
         {
+            files: [
+                GLOB_JS,
+                GLOB_JSX,
+                GLOB_TS,
+                GLOB_TSX,
+            ],
             name: 'abrahamsaanchez:jsdoc',
             plugins: {
                 jsdoc: PLUGIN_JSDOC,

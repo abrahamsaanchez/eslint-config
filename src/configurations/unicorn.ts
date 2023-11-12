@@ -75,7 +75,7 @@ export function unicorn(): ConfigurationItems {
                 'unicorn/prefer-string-slice': 'error',
                 'unicorn/prefer-string-starts-ends-with': 'error',
                 'unicorn/prefer-string-trim-start-end': 'error',
-                'unicorn/prefer-top-level-await': 'error',
+                'unicorn/prefer-top-level-await': 'off',
                 'unicorn/prefer-type-error': 'error',
                 'unicorn/throw-new-error': 'error',
             },

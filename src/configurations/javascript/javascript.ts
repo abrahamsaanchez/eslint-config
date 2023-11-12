@@ -26,6 +26,7 @@ export function javascript(configuration: JavascriptConfiguration): Configuratio
                     ...globals.browser,
                     ...globals.es2021,
                     ...globals.node,
+                    ...globals.jest,
                     document: 'readonly',
                     navigator: 'readonly',
                     window: 'readonly',

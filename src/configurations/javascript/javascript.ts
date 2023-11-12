@@ -48,13 +48,7 @@ export function javascript(configuration: JavascriptConfiguration): Configuratio
                 'unused-imports': PLUGIN_UNUSED_IMPORTS,
             },
             rules: {
-                'accessor-pairs': [
-                    'error',
-                    {
-                        enforceForClassMembers: true,
-                        setWithoutGet: true,
-                    },
-                ],
+                'accessor-pairs': 'off',
 
                 'array-callback-return': [
                     'error',

@@ -1,3 +1,4 @@
+import { GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX } from '../globs';
 import { PLUGIN_NODE } from '../plugins/node';
 import type { ConfigurationItems } from '../types/configuration-items';
 
@@ -8,6 +9,12 @@ export function node(): ConfigurationItems {
     // Return the `node` rules
     return [
         {
+            files: [
+                GLOB_JS,
+                GLOB_JSX,
+                GLOB_TS,
+                GLOB_TSX,
+            ],
             name: 'abrahamsaanchez:node',
             plugins: {
                 node: PLUGIN_NODE,

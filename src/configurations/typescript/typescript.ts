@@ -163,7 +163,7 @@ export function typescript(configuration?: TypescriptConfiguration): Configurati
             },
         ],
         'ts/restrict-plus-operands': 'error',
-        'ts/restrict-template-expressions': 'error',
+        'ts/restrict-template-expressions': 'off',
         'ts/switch-exhaustiveness-check': 'error',
         'ts/unbound-method': 'error',
     };

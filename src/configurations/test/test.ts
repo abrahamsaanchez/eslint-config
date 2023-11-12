@@ -44,6 +44,8 @@ export function test(configuration: TestConfiguration): ConfigurationItems {
             },
             name: 'abrahamsaanchez:test:rules',
             rules: {
+                'no-new': 'off',
+                
                 'test/consistent-test-it': [
                     'error',
                     {

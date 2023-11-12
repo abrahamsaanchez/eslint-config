@@ -5,6 +5,7 @@ import type { ConfigurationItems } from '../../types/configuration-items';
 import type { RecursiveRecord } from '../../types/recursive-record';
 import type { Rules } from '../../types/rules';
 import type { TestConfiguration } from './test-configuration';
+import globals from 'globals';
 
 /**
  * Generates the `test` rules for the received configuration.
@@ -15,6 +16,7 @@ export function test(configuration: TestConfiguration): ConfigurationItems {
     // Extract the required values from the received configuration
     const {
         isInEditor = false,
+        isJestEnabled = false,
         overrides = {},
     } = configuration;
 
@@ -37,7 +39,7 @@ export function test(configuration: TestConfiguration): ConfigurationItems {
             files: GLOB_TESTS,
             languageOptions: {
                 globals: {
-                    'jest/globals': true,
+                    ...globals.jest,
                 },
             },
             name: 'abrahamsaanchez:test:rules',
@@ -62,7 +64,6 @@ export function test(configuration: TestConfiguration): ConfigurationItems {
                 'test/no-conditional-expect': 'error',
                 'test/no-conditional-in-test': 'error',
                 'test/no-confusing-set-timeout': 'off',
-                'test/no-deprecated-functions': 'error',
                 'test/no-done-callback': 'error',
                 'test/no-duplicate-hooks': 'error',
                 'test/no-identical-title': 'error',
@@ -82,6 +83,10 @@ export function test(configuration: TestConfiguration): ConfigurationItems {
                         maxNumberOfTopLevelDescribes: 1,
                     },
                 ],
+
+                ...isJestEnabled ? {
+                    'test/no-deprecated-functions': 'error',
+                } : {},
 
                 ...overrides,
             },

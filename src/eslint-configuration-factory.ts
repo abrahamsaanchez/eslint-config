@@ -25,6 +25,9 @@ export class EslintConfigurationFactory {
             overrides = {},
         } = options;
 
+        // Determines if `jest` is enabled
+        const isJestEnabled = isPackageExists('jest');
+
         // Determines if `typescript` is enabled
         const isTypescriptEnabled = isPackageExists('typescript');
 
@@ -80,6 +83,7 @@ export class EslintConfigurationFactory {
             // Push the `test` rules
             configurations.push(test({
                 isInEditor: isInEditor,
+                isJestEnabled: isJestEnabled,
                 overrides: overrides.test,
             }));
         }

@@ -13,7 +13,6 @@ import globals from 'globals';
 export function javascript(configuration: JavascriptConfiguration): ConfigurationItems {
     // Extract the required values from the received configuration
     const {
-        isInEditor = false,
         overrides = {},
     } = configuration;
 
@@ -257,15 +256,7 @@ export function javascript(configuration: JavascriptConfiguration): Configuratio
                     },
                 ],
                 'no-unused-private-class-members': 'error',
-                'no-unused-vars': [
-                    'error',
-                    {
-                        args: 'none',
-                        caughtErrors: 'none',
-                        ignoreRestSiblings: true,
-                        vars: 'all',
-                    },
-                ],
+                'no-unused-vars': 'off',
                 'no-use-before-define': [
                     'error',
                     {
@@ -353,14 +344,14 @@ export function javascript(configuration: JavascriptConfiguration): Configuratio
                     'error',
                     'never',
                 ],
-                'unused-imports/no-unused-imports': isInEditor ? 'off' : 'error',
+                'unused-imports/no-unused-imports': 'error',
 
-                'unused-imports/no-unused-vars': [
-                    'error',
+                "unused-imports/no-unused-vars": [
+                    "warn",
                     {
-                        args: 'after-used',
-                        vars: 'all',
-                    },
+                        "args": "after-used",
+                        "vars": "all"
+                    }
                 ],
                 'use-isnan': [
                     'error',

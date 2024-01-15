@@ -1,4 +1,4 @@
-import { GLOB_HTML } from '../globs';
+import { GLOB_HTML, GLOB_PHP } from '../globs';
 import { PARSER_ANGULAR } from '../plugins/angular';
 import { PLUGIN_TAILWINDCSS } from '../plugins/tailwindcss';
 import type { ConfigurationItems } from '../types/configuration-items';
@@ -13,6 +13,7 @@ export function tailwindcss(): ConfigurationItems {
         {
             files: [
                 GLOB_HTML,
+                GLOB_PHP
             ],
             languageOptions: {
                 parser: PARSER_ANGULAR,

@@ -19,7 +19,6 @@ export const GLOB_JSONC = '**/*.jsonc';
 export const GLOB_MARKDOWN = '**/*.md';
 export const GLOB_YAML = '**/*.y?(a)ml';
 export const GLOB_HTML = '**/*.htm?(l)';
-export const GLOB_PHP = '**/*.php';
 
 export const GLOB_MARKDOWN_CODE = `${GLOB_MARKDOWN}/${GLOB_SRC}`;
 

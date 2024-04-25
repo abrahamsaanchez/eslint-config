@@ -25,8 +25,8 @@
         "commit": "git add . && git-cz",
         "commit:amend": "git add . && git commit --amend --no-edit",
         "dev": "tsup src/index.ts --format esm,cjs --watch & eslint-flat-config-viewer",
-        "lint": "npm run stub && eslint .",
-        "lint:fix": "npm run stub && eslint --fix .",
+        "lint": "bun run typecheck && bun run stub && eslint .",
+        "lint:fix": "bun run stub && eslint --fix .",
         "prepack": "nr build",
         "prepare": "husky install",
         "release": "bumpp --commit \"chore: Release v%s.\" && npm publish",
@@ -68,6 +68,7 @@
         "yaml-eslint-parser": "1.2.2"
     },
     "devDependencies": {
+        "@antfu/eslint-config": "2.15.0",
         "@antfu/ni": "0.21.12",
         "@commitlint/cli": "19.3.0",
         "@commitlint/cz-commitlint": "19.2.0",

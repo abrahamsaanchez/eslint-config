@@ -147,7 +147,6 @@ export function typescript(configuration?: TypescriptConfiguration): Configurati
         'ts/no-for-in-array': 'error',
         'ts/no-implied-eval': 'error',
         'ts/no-misused-promises': 'off',
-        'ts/no-throw-literal': 'error',
         'ts/no-unnecessary-boolean-literal-compare': 'error',
         'ts/no-unnecessary-type-assertion': 'error',
         'ts/no-unsafe-argument': 'off',
@@ -204,10 +203,6 @@ export function typescript(configuration?: TypescriptConfiguration): Configurati
             },
             name: 'abrahamsaanchez:typescript:rules',
             rules: {
-                'antfu/generic-spacing': 'error',
-                'antfu/named-tuple-spacing': 'error',
-                'antfu/no-cjs-exports': 'error',
-
                 'no-dupe-class-members': 'off',
                 'no-invalid-this': 'off',
                 'no-loss-of-precision': 'off',

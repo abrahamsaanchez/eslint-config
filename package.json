@@ -1,7 +1,7 @@
 {
     "name": "@abrahamsaanchez/eslint-config",
     "type": "module",
-    "version": "1.1.1",
+    "version": "2.0.0",
     "description": "Abraham's ESLint config",
     "author": "Abraham Sánchez <abrahamsaanchez@gmail.com> (https://github.com/abrahamsaanchez/)",
     "license": "MIT",
@@ -29,7 +29,7 @@
         "lint:fix": "bun run stub && eslint --fix .",
         "prepack": "nr build",
         "prepare": "husky",
-        "release": "bumpp --commit \"chore: Release v%s.\" && npm publish",
+        "release": "bumpp --commit \"chore: Release v%s.\" && bun publish",
         "stub": "tsup src/index.ts --format esm",
         "typecheck": "tsc --noEmit"
     },

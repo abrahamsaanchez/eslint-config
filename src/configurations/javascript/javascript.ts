@@ -1,9 +1,11 @@
+import globals from 'globals';
+
+import type { ConfigurationItems } from '../../types/configuration-items';
+import type { JavascriptConfiguration } from './javascript-configuration';
+
 import { GLOB_SRC, GLOB_SRC_EXT } from '../../globs';
 import { PLUGIN_ANTFU } from '../../plugins/antfu';
 import { PLUGIN_UNUSED_IMPORTS } from '../../plugins/unused-imports';
-import type { ConfigurationItems } from '../../types/configuration-items';
-import type { JavascriptConfiguration } from './javascript-configuration';
-import globals from 'globals';
 
 /**
  * Generates the `javascript` rules for the received configuration.

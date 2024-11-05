@@ -1,6 +1,7 @@
+import type { ConfigurationItems } from '../types/configuration-items';
+
 import { GLOB_HTML } from '../globs';
 import { PLUGIN_COMMENTS } from '../plugins/comments';
-import type { ConfigurationItems } from '../types/configuration-items';
 
 /**
  * Generates the `comments` rules.

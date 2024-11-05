@@ -1,5 +1,6 @@
-import { GLOB_EXCLUDE } from '../globs';
 import type { ConfigurationItems } from '../types/configuration-items';
+
+import { GLOB_EXCLUDE } from '../globs';
 
 /**
  * Generates the `ignores` rules.

@@ -1,7 +1,8 @@
-import { PLUGIN_PRETTIER, PRETTIER_CONFIGURATION } from '../plugins/prettier';
 import type { ConfigurationItems } from '../types/configuration-items';
 import type { RecursiveRecord } from '../types/recursive-record';
 import type { Rules } from '../types/rules';
+
+import { PLUGIN_PRETTIER, PRETTIER_CONFIGURATION } from '../plugins/prettier';
 
 /**
  * Generates the `prettier` rules.

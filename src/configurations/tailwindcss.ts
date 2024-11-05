@@ -1,7 +1,8 @@
+import type { ConfigurationItems } from '../types/configuration-items';
+
 import { GLOB_HTML } from '../globs';
 import { PARSER_ANGULAR } from '../plugins/angular';
 import { PLUGIN_TAILWINDCSS } from '../plugins/tailwindcss';
-import type { ConfigurationItems } from '../types/configuration-items';
 
 /**
  * TailwindCSS plugin for props and items sorting.

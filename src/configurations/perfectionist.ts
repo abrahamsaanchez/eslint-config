@@ -1,5 +1,6 @@
-import { PLUGIN_PERFECTIONIST } from '../plugins/perfectionist';
 import type { ConfigurationItems } from '../types/configuration-items';
+
+import { PLUGIN_PERFECTIONIST } from '../plugins/perfectionist';
 
 /**
  * Perfectionist plugin for props and items sorting.
@@ -18,7 +19,7 @@ export function perfectionist(): ConfigurationItems {
                 'perfectionist/sort-imports': [
                     'error',
                     {
-                        'ignore-case': false,
+                        'ignoreCase': false,
                         'order': 'asc',
                         'type': 'alphabetical',
                     },

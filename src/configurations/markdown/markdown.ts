@@ -1,7 +1,8 @@
-import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE } from '../../globs';
-import { PLUGIN_MARKDOWN } from '../../plugins/markdown';
 import type { ConfigurationItems } from '../../types/configuration-items';
 import type { MarkdownConfiguration } from './markdown-configuration';
+
+import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE } from '../../globs';
+import { PLUGIN_MARKDOWN } from '../../plugins/markdown';
 
 /**
  * Generates the `markdown` rules for the received configuration.

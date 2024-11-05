@@ -1,7 +1,8 @@
-import type { Rules } from './rules';
 import type { Linter } from 'eslint'
 
-export type ConfigurationItem = Omit<Linter.FlatConfig<Linter.RulesRecord & Rules>, 'plugins'> & {
+import type { Rules } from './rules';
+
+export type ConfigurationItem = Omit<Linter.Config<Linter.RulesRecord & Rules>, 'plugins'> & {
     /**
      * Custom name of each config item.
      */

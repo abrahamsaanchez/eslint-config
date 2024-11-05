@@ -1,7 +1,8 @@
-import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC } from '../../globs';
-import { PARSER_JSONC, PLUGIN_JSONC } from '../../plugins/jsonc';
 import type { ConfigurationItems } from '../../types/configuration-items';
 import type { JsoncConfiguration } from './jsonc-configuration';
+
+import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC } from '../../globs';
+import { PARSER_JSONC, PLUGIN_JSONC } from '../../plugins/jsonc';
 
 /**
  * Generates the `jsonc` rules for the received configuration.

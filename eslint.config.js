@@ -1,4 +1,5 @@
 // @ts-check
+// eslint-disable-next-line antfu/no-import-dist
 import { EslintConfigurationFactory } from './dist/index.js';
 
 // Generate the eslint configuration

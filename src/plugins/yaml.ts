@@ -1,8 +1,9 @@
 // eslint-disable-next-line ts/ban-ts-comment
 // @ts-nocheck
 
-import { interopDefault } from '../utils/interop-default';
 import * as _pluginYaml from 'eslint-plugin-yml';
+
+import { interopDefault } from '../utils/interop-default';
 
 export const PLUGIN_YAML = interopDefault(_pluginYaml);
 

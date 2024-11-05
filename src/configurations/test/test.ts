@@ -1,11 +1,13 @@
-import { GLOB_TESTS } from '../../globs';
-import { PLUGIN_JEST } from '../../plugins/jest';
-import { PLUGIN_NO_ONLY_TESTS } from '../../plugins/no-only-tests';
+import globals from 'globals';
+
 import type { ConfigurationItems } from '../../types/configuration-items';
 import type { RecursiveRecord } from '../../types/recursive-record';
 import type { Rules } from '../../types/rules';
 import type { TestConfiguration } from './test-configuration';
-import globals from 'globals';
+
+import { GLOB_TESTS } from '../../globs';
+import { PLUGIN_JEST } from '../../plugins/jest';
+import { PLUGIN_NO_ONLY_TESTS } from '../../plugins/no-only-tests';
 
 /**
  * Generates the `test` rules for the received configuration.

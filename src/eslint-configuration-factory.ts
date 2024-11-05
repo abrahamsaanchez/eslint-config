@@ -1,14 +1,16 @@
-import { comments, ignores, imports, javascript, jsdoc, jsonc, markdown, node, perfectionist, sortPackageJson, sortTsconfig, test, typescript, unicorn, yaml } from './configurations';
-import { tailwindcss } from './configurations/tailwindcss';
-import type { ConfigurationItem } from './types/configuration-item';
-import type { ConfigurationItems } from './types/configuration-items';
-import type { EslintConfigurationFactoryOptions } from './types/eslint-configuration-factory-options';
-import { combineConfigurations } from './utils/combine-configurations';
-import { extractConfigurationItemFromObject } from './utils/extract-flat-configuration-from-object';
 import gitignore from 'eslint-config-flat-gitignore';
 import { isPackageExists } from 'local-pkg';
 import fs from 'node:fs';
 import process from 'node:process';
+
+import type { ConfigurationItem } from './types/configuration-item';
+import type { ConfigurationItems } from './types/configuration-items';
+import type { EslintConfigurationFactoryOptions } from './types/eslint-configuration-factory-options';
+
+import { comments, ignores, imports, javascript, jsdoc, jsonc, markdown, node, perfectionist, sortPackageJson, sortTsconfig, test, typescript, unicorn, yaml } from './configurations';
+import { tailwindcss } from './configurations/tailwindcss';
+import { combineConfigurations } from './utils/combine-configurations';
+import { extractConfigurationItemFromObject } from './utils/extract-flat-configuration-from-object';
 
 export class EslintConfigurationFactory {
     /**

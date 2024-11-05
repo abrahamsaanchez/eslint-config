@@ -1,8 +1,10 @@
+import * as TypescriptResolver from 'eslint-import-resolver-typescript';
+
+import type { ConfigurationItems } from '../../types/configuration-items';
+import type { ImportsConfiguration } from './imports-configuration';
+
 import { PLUGIN_ANTFU } from '../../plugins/antfu';
 import { PLUGIN_IMPORT } from '../../plugins/import';
-import type { ConfigurationItems } from '../../types/configuration-items';
-import { coerceArray } from '../../utils/coerce-array';
-import type { ImportsConfiguration } from './imports-configuration';
 
 /**
  * Generates the `imports` rules for the received configuration.
@@ -12,11 +14,6 @@ import type { ImportsConfiguration } from './imports-configuration';
 export function imports(configuration: ImportsConfiguration): ConfigurationItems {
     // Determines if `typescript` is enabled
     const isTypescriptEnabled = Object.keys(configuration.typescript ?? {}).length > 0;
-
-    // Generate the path to the `tsconfig.json`
-    const tsconfigPath = isTypescriptEnabled
-        ? coerceArray(configuration.typescript!.tsconfigPath)
-        : undefined;
 
     // Return the `imports` rules
     return [
@@ -28,6 +25,7 @@ export function imports(configuration: ImportsConfiguration): ConfigurationItems
             },
             rules: {
                 'antfu/import-dedupe': 'error',
+                'antfu/no-import-dist': 'error',
                 'antfu/no-import-node-modules-by-path': 'error',
 
                 'import/first': 'error',
@@ -48,10 +46,9 @@ export function imports(configuration: ImportsConfiguration): ConfigurationItems
             settings: {
                 ...isTypescriptEnabled
                     ? {
-                            'import/resolver': {
-                                typescript: {
-                                    project: tsconfigPath,
-                                },
+                            'import-x/resolver': {
+                                name: 'typescript-resolver',
+                                resolver: TypescriptResolver
                             },
                         }
                     : {},

@@ -1,6 +1,7 @@
+import type { ConfigurationItems } from '../types/configuration-items';
+
 import { GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX } from '../globs';
 import { PLUGIN_JSDOC } from '../plugins/jsdoc';
-import type { ConfigurationItems } from '../types/configuration-items';
 
 /**
  * Generates the `jsdoc` rules for the received configuration.

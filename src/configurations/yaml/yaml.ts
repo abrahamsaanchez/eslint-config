@@ -1,7 +1,8 @@
-import { GLOB_YAML } from '../../globs';
-import { PARSER_YAML, PLUGIN_YAML } from '../../plugins/yaml';
 import type { ConfigurationItems } from '../../types/configuration-items';
 import type { YamlConfiguration } from './yaml-configuration';
+
+import { GLOB_YAML } from '../../globs';
+import { PARSER_YAML, PLUGIN_YAML } from '../../plugins/yaml';
 
 /**
  * Generates the `yaml` rules for the received configuration.

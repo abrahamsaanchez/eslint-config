@@ -1,6 +1,7 @@
+import type { ConfigurationItems } from '../types/configuration-items';
+
 import { GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX } from '../globs';
 import { PLUGIN_NODE } from '../plugins/node';
-import type { ConfigurationItems } from '../types/configuration-items';
 
 /**
  * Generates the `node` rules.

@@ -1,13 +1,16 @@
+import type { ParserOptions } from '@antfu/eslint-define-config';
+
+import { cwd } from 'node:process';
+
+import type { ConfigurationItem } from '../../types/configuration-item';
+import type { ConfigurationItems } from '../../types/configuration-items';
+import type { TypescriptConfiguration } from './typescript-configuration';
+
 import { GLOB_TS, GLOB_TSX } from '../../globs';
 import { PLUGIN_ANTFU } from '../../plugins/antfu';
 import { PLUGIN_IMPORT } from '../../plugins/import';
 import { PARSER_TYPESCRIPT, PLUGIN_TYPESCRIPT } from '../../plugins/typescript';
-import type { ConfigurationItem } from '../../types/configuration-item';
-import type { ConfigurationItems } from '../../types/configuration-items';
 import { coerceArray } from '../../utils/coerce-array';
-import type { TypescriptConfiguration } from './typescript-configuration';
-import type { ParserOptions } from '@antfu/eslint-define-config';
-import { cwd } from 'node:process';
 
 /**
  * Generates the `typescript` rules for the received configuration.
@@ -213,14 +216,6 @@ export function typescript(configuration?: TypescriptConfiguration): Configurati
                     'error',
                     {
                         'ts-ignore': 'allow-with-description',
-                    },
-                ],
-                'ts/ban-types': [
-                    'error',
-                    {
-                        types: {
-                            Function: false,
-                        },
                     },
                 ],
                 'ts/consistent-type-definitions': [

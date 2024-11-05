@@ -1,7 +1,8 @@
+import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore';
+
 import type { ConfigurationItem } from './configuration-item';
 import type { IsInEditorProperty } from './is-in-editor-property';
 import type { TypeScriptConfiguration } from './typescript-configuration';
-import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore';
 
 export type EslintConfigurationFactoryOptions = IsInEditorProperty & {
     /**

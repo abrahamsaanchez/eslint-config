@@ -1,5 +1,6 @@
-import { PLUGIN_UNICORN } from '../plugins/unicorn';
 import type { ConfigurationItems } from '../types/configuration-items';
+
+import { PLUGIN_UNICORN } from '../plugins/unicorn';
 
 /**
  * Generates the `unicorn` rules.

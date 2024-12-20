@@ -301,7 +301,12 @@ export function typescript(configuration?: TypescriptConfiguration): Configurati
                 'ts/no-extra-non-null-assertion': 'error',
                 'ts/no-extraneous-class': 'off',
                 'ts/no-import-type-side-effects': 'error',
-                'ts/no-invalid-this': 'error',
+                'ts/no-invalid-this': [
+                    'error',
+                    {
+                        capIsConstructor: true,
+                    }
+                ],
                 'ts/no-invalid-void-type': 'off',
                 'ts/no-loss-of-precision': 'error',
                 'ts/no-non-null-asserted-optional-chain': 'error',

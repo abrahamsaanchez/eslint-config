@@ -162,7 +162,6 @@ export function javascript(configuration: JavascriptConfiguration): Configuratio
                 'no-multi-str': 'error',
                 'no-new': 'error',
                 'no-new-func': 'error',
-                'no-new-symbol': 'error',
                 'no-new-wrappers': 'error',
                 'no-obj-calls': 'error',
                 'no-octal': 'error',
@@ -274,10 +273,6 @@ export function javascript(configuration: JavascriptConfiguration): Configuratio
                 'no-useless-return': 'error',
                 'no-var': 'error',
                 'no-with': 'error',
-                'object-curly-spacing': [
-                    'error',
-                    'always',
-                ],
                 'object-shorthand': [
                     'error',
                     'never',
@@ -286,14 +281,6 @@ export function javascript(configuration: JavascriptConfiguration): Configuratio
                     'error',
                     {
                         initialized: 'never',
-                    },
-                ],
-                'padding-line-between-statements': [
-                    'error',
-                    {
-                        blankLine: 'always',
-                        next: 'return',
-                        prev: '*',
                     },
                 ],
                 'prefer-arrow-callback': [

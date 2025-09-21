@@ -45,18 +45,14 @@ export function markdown(configuration: MarkdownConfiguration): ConfigurationIte
             rules: {
                 'antfu/no-cjs-exports': 'off',
                 'antfu/no-ts-export-equal': 'off',
-
                 'import/no-unresolved': 'off',
                 'no-alert': 'off',
                 'no-console': 'off',
                 'no-undef': 'off',
                 'no-unused-expressions': 'off',
-
                 'no-unused-vars': 'off',
-
                 'node/prefer-global/process': 'off',
                 'style/comma-dangle': 'off',
-
                 'style/eol-last': 'off',
                 'ts/consistent-type-imports': 'off',
                 'ts/no-namespace': 'off',
@@ -64,12 +60,9 @@ export function markdown(configuration: MarkdownConfiguration): ConfigurationIte
                 'ts/no-require-imports': 'off',
                 'ts/no-unused-vars': 'off',
                 'ts/no-use-before-define': 'off',
-
-                'ts/no-var-requires': 'off',
                 'unicode-bom': 'off',
                 'unused-imports/no-unused-imports': 'off',
                 'unused-imports/no-unused-vars': 'off',
-
                 // Type aware rules
                 ...{
                     'ts/await-thenable': 'off',

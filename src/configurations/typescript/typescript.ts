@@ -308,7 +308,6 @@ export function typescript(configuration?: TypescriptConfiguration): Configurati
                     }
                 ],
                 'ts/no-invalid-void-type': 'off',
-                'ts/no-loss-of-precision': 'error',
                 'ts/no-non-null-asserted-optional-chain': 'error',
                 'ts/no-non-null-assertion': 'off',
                 'ts/no-redeclare': 'error',
@@ -324,7 +323,6 @@ export function typescript(configuration?: TypescriptConfiguration): Configurati
                 ],
                 'ts/no-useless-constructor': 'error',
                 'ts/prefer-for-of': 'error',
-                'ts/prefer-ts-expect-error': 'error',
                 'ts/triple-slash-reference': 'off',
                 'ts/unified-signatures': 'off',
 
@@ -361,7 +359,6 @@ export function typescript(configuration?: TypescriptConfiguration): Configurati
             name: 'abrahamsaanchez:typescript:javascript-overrides',
             rules: {
                 'ts/no-require-imports': 'off',
-                'ts/no-var-requires': 'off',
             },
         },
     ];

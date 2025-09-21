@@ -1,7 +1,7 @@
 {
     "name": "@abrahamsaanchez/eslint-config",
     "type": "module",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "description": "Abraham's ESLint config",
     "author": "Abraham Sánchez <abrahamsaanchez@gmail.com> (https://github.com/abrahamsaanchez/)",
     "license": "MIT",

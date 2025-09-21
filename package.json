@@ -25,11 +25,11 @@
         "commit": "git-cz",
         "commit:amend": "git add . && git commit --amend --no-edit",
         "dev": "tsup src/index.ts --format esm,cjs --watch & eslint-flat-config-viewer",
-        "lint": "bun run typecheck && bun run stub && eslint .",
-        "lint:fix": "bun run stub && eslint --fix .",
+        "lint": "pnpm run typecheck && pnpm run stub && eslint .",
+        "lint:fix": "pnpm run stub && eslint --fix .",
         "prepack": "nr build",
         "prepare": "simple-git-hooks",
-        "release": "bumpp --commit \"chore: Release v%s.\" && bun publish",
+        "release": "bumpp --commit \"chore: Release v%s.\" && pnpm publish",
         "stub": "tsup src/index.ts --format esm",
         "typecheck": "tsc --noEmit"
     },
@@ -95,7 +95,7 @@
         "eslint": ">=9.10.0"
     },
     "simple-git-hooks": {
-        "commit-msg": "bun commitlint --edit ${1}",
-        "pre-commit": "bun typecheck && bun lint:fix"
+        "commit-msg": "pnpm commitlint --edit ${1}",
+        "pre-commit": "pnpm typecheck && pnpm lint:fix"
     }
 }

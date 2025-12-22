@@ -1,7 +1,7 @@
 {
     "name": "@abrahamsaanchez/eslint-config",
     "type": "module",
-    "version": "2.0.5",
+    "version": "2.0.4",
     "description": "Abraham's ESLint config",
     "author": "Abraham Sánchez <abrahamsaanchez@gmail.com> (https://github.com/abrahamsaanchez/)",
     "license": "MIT",
@@ -21,16 +21,16 @@
         "dist"
     ],
     "scripts": {
-        "build": "tsup src/index.ts --format esm,cjs --clean --dts",
+        "build": "tsdown src/index.ts --format esm,cjs --clean --dts",
         "commit": "git-cz",
         "commit:amend": "git add . && git commit --amend --no-edit",
-        "dev": "tsup src/index.ts --format esm,cjs --watch & eslint-flat-config-viewer",
+        "dev": "tsdown src/index.ts --format esm,cjs --watch & eslint-flat-config-viewer",
         "lint": "pnpm run typecheck && pnpm run stub && eslint .",
         "lint:fix": "pnpm run stub && eslint --fix .",
         "prepack": "nr build",
         "prepare": "simple-git-hooks",
         "release": "bumpp --commit \"chore: Release v%s.\" && pnpm publish",
-        "stub": "tsup src/index.ts --format esm",
+        "stub": "tsdown src/index.ts --format esm",
         "typecheck": "tsc --noEmit"
     },
     "config": {
@@ -87,7 +87,7 @@
         "rimraf": "6.1.2",
         "simple-git-hooks": "2.13.1",
         "sucrase": "3.35.1",
-        "tsup": "8.5.1",
+        "tsdown": "^0.18.2",
         "typescript": "5.9.3",
         "unbuild": "3.6.1"
     },

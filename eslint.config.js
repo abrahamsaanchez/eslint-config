@@ -1,6 +1,6 @@
 // @ts-check
 // eslint-disable-next-line antfu/no-import-dist
-import { EslintConfigurationFactory } from './dist/index.js';
+import { EslintConfigurationFactory } from './dist/index.mjs';
 
 // Generate the eslint configuration
 const CONFIGURATION = EslintConfigurationFactory.create({

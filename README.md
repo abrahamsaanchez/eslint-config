@@ -25,27 +25,12 @@ npm i -D eslint @abrahamsaanchez/eslint-config
 
 ### Create config file
 
-With [`"type": "module"`](https://nodejs.org/api/packages.html#type) in `package.json` (recommended):
-
 ```js
-// eslint.config.js
+// eslint.config.mjs
 import { EslintConfigurationFactory } from '@abrahamsaanchez/eslint-config';
 
 export default EslintConfigurationFactory.create();
 ```
-
-Using CommonJS:
-
-```js
-// eslint.config.js
-const {
-    EslintConfigurationFactory
-} = require('@abrahamsaanchez/eslint-config');
-
-module.export = EslintConfigurationFactory.create();
-```
-
-> Note that `.eslintignore` no longer works in Flat config.
 
 ### Add script for package.json
 

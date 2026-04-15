@@ -4,8 +4,6 @@ import type { ConfigurationItems } from '../../types/configuration-items';
 import type { JavascriptConfiguration } from './javascript-configuration';
 
 import { GLOB_SRC, GLOB_SRC_EXT } from '../../globs';
-import { PLUGIN_ANTFU } from '../../plugins/antfu';
-import { PLUGIN_UNUSED_IMPORTS } from '../../plugins/unused-imports';
 
 /**
  * Generates the `javascript` rules for the received configuration.
@@ -45,10 +43,6 @@ export function javascript(configuration: JavascriptConfiguration): Configuratio
                 reportUnusedDisableDirectives: true,
             },
             name: 'abrahamsaanchez:javascript',
-            plugins: {
-                'antfu': PLUGIN_ANTFU,
-                'unused-imports': PLUGIN_UNUSED_IMPORTS,
-            },
             rules: {
                 'accessor-pairs': 'off',
 
@@ -333,12 +327,12 @@ export function javascript(configuration: JavascriptConfiguration): Configuratio
                 ],
                 'unused-imports/no-unused-imports': 'error',
 
-                "unused-imports/no-unused-vars": [
-                    "warn",
+                'unused-imports/no-unused-vars': [
+                    'warn',
                     {
-                        "args": "after-used",
-                        "vars": "all"
-                    }
+                        args: 'after-used',
+                        vars: 'all',
+                    },
                 ],
                 'use-isnan': [
                     'error',
@@ -364,8 +358,8 @@ export function javascript(configuration: JavascriptConfiguration): Configuratio
         },
         {
             files: [
-`scripts/${GLOB_SRC}`,
-`cli.${GLOB_SRC_EXT}`,
+                `scripts/${GLOB_SRC}`,
+                `cli.${GLOB_SRC_EXT}`,
             ],
             name: 'abrahamsaanchez:scripts-overrides',
             rules: {

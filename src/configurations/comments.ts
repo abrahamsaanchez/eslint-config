@@ -1,7 +1,6 @@
 import type { ConfigurationItems } from '../types/configuration-items';
 
 import { GLOB_HTML } from '../globs';
-import { PLUGIN_COMMENTS } from '../plugins/comments';
 
 /**
  * Generates the `comments` rules.
@@ -12,9 +11,6 @@ export function comments(): ConfigurationItems {
         {
             ignores: [GLOB_HTML],
             name: 'abrahamsaanchez:eslint-comments',
-            plugins: {
-                'eslint-comments': PLUGIN_COMMENTS,
-            },
             rules: {
                 'eslint-comments/disable-enable-pair': [
                     'error',

@@ -1,3 +1,4 @@
+import type { OptionsConfig } from '@antfu/eslint-config';
 import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore';
 
 import type { ConfigurationItem } from './configuration-item';
@@ -5,6 +6,13 @@ import type { IsInEditorProperty } from './is-in-editor-property';
 import type { TypeScriptConfiguration } from './typescript-configuration';
 
 export type EslintConfigurationFactoryOptions = IsInEditorProperty & {
+    /**
+     * Advanced customization for the underlying `@antfu/eslint-config` base.
+     *
+     * Project defaults are still applied explicitly on top afterwards.
+     */
+    antfu?: OptionsConfig;
+
     /**
      * Determines if the JSONC support is enabled.
      *

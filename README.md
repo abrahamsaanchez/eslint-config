@@ -1,15 +1,14 @@
 # @abrahamsaanchez/eslint-config
 
-A configuration factory for [ESLint](https://eslint.org), heavily inspired from [@antfu/eslint-config](https://github.com/antfu/eslint-config) but allowing Prettier.
+A thin extension of [@antfu/eslint-config](https://github.com/antfu/eslint-config) for [ESLint](https://eslint.org).
 
-- Single quotes, no semi.
-- Indent to 4 spaces by default (in YAML files we use 2 spaces to avoid errors).
-- Designed to work with TypeScript and JSX out-of-box.
-- Lints also for json, markdown and yaml.
-- Sorted imports, dangling commas.
-- Reasonable defaults, best practices, only one-line of config
-- Respects `.gitignore` by default
-- [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
+- Uses `@antfu/eslint-config` as the base.
+- Keeps this package's defaults on top: 4 spaces, single quotes, semicolons.
+- Preserves YAML indentation at 2 spaces.
+- Keeps JSON, Markdown, YAML and TypeScript support enabled.
+- Adds package and tsconfig key sorting plus Tailwind CSS rules.
+- Respects `.gitignore` by default.
+- [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily.
 
 > [!IMPORTANT]
 > This config is written in the new [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new).
@@ -30,6 +29,20 @@ npm i -D eslint @abrahamsaanchez/eslint-config
 import { EslintConfigurationFactory } from '@abrahamsaanchez/eslint-config';
 
 export default EslintConfigurationFactory.create();
+```
+
+You can still pass `@antfu/eslint-config` options directly:
+
+```js
+// eslint.config.mjs
+import { EslintConfigurationFactory } from '@abrahamsaanchez/eslint-config';
+
+export default EslintConfigurationFactory.create({
+    typescript: {
+        tsconfigPath: 'tsconfig.json',
+    },
+    vue: true,
+});
 ```
 
 ### Add script for package.json

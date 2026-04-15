@@ -1,9 +1,6 @@
-import * as TypescriptResolver from 'eslint-import-resolver-typescript';
-
 import type { ConfigurationItems } from '../../types/configuration-items';
 import type { ImportsConfiguration } from './imports-configuration';
 
-import { PLUGIN_ANTFU } from '../../plugins/antfu';
 import { PLUGIN_IMPORT } from '../../plugins/import';
 
 /**
@@ -13,14 +10,13 @@ import { PLUGIN_IMPORT } from '../../plugins/import';
  */
 export function imports(configuration: ImportsConfiguration): ConfigurationItems {
     // Determines if `typescript` is enabled
-    const isTypescriptEnabled = Object.keys(configuration.typescript ?? {}).length > 0;
+    const isTypescriptEnabled = configuration.typescript != null;
 
     // Return the `imports` rules
     return [
         {
             name: 'abrahamsaanchez:imports',
             plugins: {
-                antfu: PLUGIN_ANTFU,
                 import: PLUGIN_IMPORT,
             },
             rules: {
@@ -46,9 +42,28 @@ export function imports(configuration: ImportsConfiguration): ConfigurationItems
             settings: {
                 ...isTypescriptEnabled
                     ? {
+                            'import-x/extensions': [
+                                '.ts',
+                                '.tsx',
+                                '.cts',
+                                '.mts',
+                                '.js',
+                                '.jsx',
+                                '.cjs',
+                                '.mjs',
+                            ],
+                            'import-x/parsers': {
+                                '@typescript-eslint/parser': [
+                                    '.ts',
+                                    '.tsx',
+                                    '.cts',
+                                    '.mts',
+                                ],
+                            },
                             'import-x/resolver': {
-                                name: 'typescript-resolver',
-                                resolver: TypescriptResolver
+                                typescript: {
+                                    project: 'tsconfig.json',
+                                },
                             },
                         }
                     : {},

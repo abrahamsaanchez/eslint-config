@@ -1,3 +1,6 @@
+import type { ParserOptions } from '@typescript-eslint/parser';
+
+import antfu, { type OptionsConfig, type OptionsTypescript } from '@antfu/eslint-config';
 import gitignore from 'eslint-config-flat-gitignore';
 import { isPackageExists } from 'local-pkg';
 import fs from 'node:fs';
@@ -12,14 +15,86 @@ import { tailwindcss } from './configurations/tailwindcss';
 import { combineConfigurations } from './utils/combine-configurations';
 import { extractConfigurationItemFromObject } from './utils/extract-flat-configuration-from-object';
 
+interface LegacyTypeScriptConfiguration {
+    parserOptions?: Partial<ParserOptions>;
+    tsconfigPath?: string | string[];
+}
+
+/**
+  *
+  * @param typescript
+  */
+function normalizeAntfuTypeScriptOptions(typescript: EslintConfigurationFactoryOptions['typescript']): OptionsTypescript | boolean {
+    if (typescript == null) {
+        return true;
+    }
+
+    if (typeof typescript === 'boolean') {
+        return typescript;
+    }
+
+    const { tsconfigPath, ...rest } = typescript as OptionsTypescript & LegacyTypeScriptConfiguration;
+
+    if (Array.isArray(tsconfigPath)) {
+        return {
+            ...rest,
+            parserOptions: {
+                ...rest.parserOptions,
+                project: tsconfigPath,
+            },
+            tsconfigPath: tsconfigPath[0],
+        };
+    }
+
+    if (typeof tsconfigPath === 'string' && tsconfigPath.length > 0) {
+        return {
+            ...rest,
+            tsconfigPath: tsconfigPath,
+        };
+    }
+
+    return rest;
+}
+
+/**
+  *
+  * @param options
+  * @param isTypescriptEnabled
+  */
+function createAntfuBaseConfig(options: EslintConfigurationFactoryOptions, isTypescriptEnabled: boolean): OptionsConfig {
+    const antfuOptions = options.antfu ?? {};
+
+    return {
+        ...antfuOptions,
+        gitignore: false,
+        imports: false,
+        isInEditor: options.isInEditor,
+        jsdoc: false,
+        jsonc: false,
+        markdown: false,
+        node: false,
+        stylistic: {
+            indent: 4,
+            quotes: 'single',
+            semi: true,
+        },
+        test: false,
+        typescript: isTypescriptEnabled
+            ? normalizeAntfuTypeScriptOptions(options.typescript)
+            : false,
+        unicorn: false,
+        yaml: false,
+    };
+}
+
 export class EslintConfigurationFactory {
     /**
-     * Creates a flat configuration for `eslint`.
-     *
-     * @param options
-     * @param userConfigs
-     */
-    public static create(options: EslintConfigurationFactoryOptions & ConfigurationItem = {}, ...userConfigs: (ConfigurationItem | ConfigurationItems)[]): ConfigurationItems {
+          * Creates a flat configuration for `eslint`.
+          *
+          * @param options
+          * @param userConfigs
+          */
+    public static async create(options: EslintConfigurationFactoryOptions & ConfigurationItem = {}, ...userConfigs: (ConfigurationItem | ConfigurationItems)[]): Promise<ConfigurationItems> {
         // Extract the required values from the received options
         const {
             gitignore: isGitignoreEnabled = true,
@@ -32,6 +107,12 @@ export class EslintConfigurationFactory {
 
         // Determines if `typescript` is enabled
         const isTypescriptEnabled = isPackageExists('typescript');
+
+        // Generate the base antfu configurations
+        const antfuConfigurations = await antfu(createAntfuBaseConfig({
+            ...options,
+            isInEditor: isInEditor,
+        }, isTypescriptEnabled));
 
         // Generate the array of configurations
         const configurations: Array<ConfigurationItems> = [
@@ -137,6 +218,7 @@ export class EslintConfigurationFactory {
 
         // Combine the generated configurations and the user configurations
         const merged = combineConfigurations(
+            antfuConfigurations,
             ...configurations,
             ...userConfigs,
         );

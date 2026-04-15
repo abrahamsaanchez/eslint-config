@@ -32,6 +32,11 @@ export function tailwindcss(): ConfigurationItems {
                 'tailwindcss/no-contradicting-classname': 'error',
                 'tailwindcss/no-custom-classname': 'off',
             },
+            settings: {
+                tailwindcss: {
+                    config: {},
+                },
+            },
         },
     ];
 }

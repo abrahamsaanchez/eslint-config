@@ -47,7 +47,6 @@ export function test(configuration: TestConfiguration): ConfigurationItems {
             name: 'abrahamsaanchez:test:rules',
             rules: {
                 'no-new': 'off',
-                
                 'test/consistent-test-it': [
                     'error',
                     {
@@ -88,9 +87,11 @@ export function test(configuration: TestConfiguration): ConfigurationItems {
                     },
                 ],
 
-                ...isJestEnabled ? {
-                    'test/no-deprecated-functions': 'error',
-                } : {},
+                ...isJestEnabled
+                    ? {
+                            'test/no-deprecated-functions': 'error',
+                        }
+                    : {},
 
                 ...overrides,
             },

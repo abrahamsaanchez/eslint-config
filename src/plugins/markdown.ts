@@ -1,7 +1,4 @@
-// eslint-disable-next-line ts/ban-ts-comment
-// @ts-nocheck
-
-import * as _pluginMarkdown from 'eslint-plugin-markdown';
+import * as _pluginMarkdown from '@eslint/markdown';
 
 import { interopDefault } from '../utils/interop-default';
 
